@@ -1,7 +1,7 @@
 class CalcController {
 
     constructor() {
-
+        this._locale = 'pt-BR';
         this._displayCalcEl = document.querySelector("#display");
         this._dateEl = document.querySelector("#data");
         this._timeEl = document.querySelector("#hora");
@@ -11,7 +11,10 @@ class CalcController {
     }
 
     initialize() {
-
+        setInterval(()=> {
+            this.displayDate = this.currentDate.toLocaleDateString(this._locale);
+            this.displayTime = this.currentDate.toLocaleTimeString(this._locale);
+        }, 1000) // a cada um segundo atualiza
     }
 
     get displayTime() {
@@ -39,7 +42,7 @@ class CalcController {
     }
 
     get currentDate() {
-        return this._currentDate;
+        return new Date();
     }
 
     set currentDate(value) {
