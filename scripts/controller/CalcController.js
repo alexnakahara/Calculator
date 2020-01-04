@@ -11,11 +11,13 @@ class CalcController {
   }
 
   initialize() {
-    this.setDisplayDateTime();
 
+    this._displayCalcEl.innerHTML = 0;
+    this.setDisplayDateTime();
     setInterval(() => {
       this.setDisplayDateTime();
     }, 1000); // a cada um segundo
+
   }
 
   setDisplayDateTime() {
@@ -81,10 +83,9 @@ class CalcController {
 
     }
   }
-  
+
   calc() {
     let last = this._operation.pop();
-
     let result = eval(this._operation.join(""));
 
     this._operation = [result, last];
@@ -98,8 +99,8 @@ class CalcController {
     for (let i = this._operation.length - 1; i >= 0; i--) {
 
       if (!this.isOperator(this._operation[i])) {
-          lastNumber = this._operation[i];
-          break;
+        lastNumber = this._operation[i];
+        break;
       }
 
     }
@@ -147,6 +148,7 @@ class CalcController {
 
   clearAll() {
     this._operation = [];
+    this.displayCalc = 0;
   }
 
   clearEntry() {
@@ -181,7 +183,7 @@ class CalcController {
         this.addOperation('%');
         break;
       case 'igual':
-
+        this.addOperation('=');
         break;
       case 'ponto':
         this.addOperation('.');
