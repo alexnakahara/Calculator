@@ -12,11 +12,13 @@ class CalcController {
 
   initialize() {
 
-    this._displayCalcEl.innerHTML = 0;
     this.setDisplayDateTime();
+
     setInterval(() => {
       this.setDisplayDateTime();
     }, 1000); // a cada um segundo
+
+    this.setLastNumberDisplay();
 
   }
 
@@ -113,6 +115,8 @@ class CalcController {
 
     }
 
+    if(!lastNumber) lastNumber = 0;
+
     this.displayCalc = lastNumber;
 
   }
@@ -156,11 +160,12 @@ class CalcController {
 
   clearAll() {
     this._operation = [];
-    this.displayCalc = 0;
+    this.setLastNumberDisplay();
   }
 
   clearEntry() {
     this._operation.pop();
+    this.setLastNumberDisplay();
   }
 
   setError() {
