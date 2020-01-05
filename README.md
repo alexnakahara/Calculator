@@ -4,5 +4,5 @@ Development for practice in Javascript
 
 ### Project
 <p align="center">
-  <img src="img/calculator.png">
+  <img width="460px" src="img/calculator.png">
 </p>
