@@ -3,4 +3,6 @@
 Development for practice in Javascript
 
 ### Project
-![Calculator](/img/calculator.png)
+<p align="center">
+  <img src="img/calculator.png">
+</p>
