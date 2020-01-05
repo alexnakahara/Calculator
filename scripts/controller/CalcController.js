@@ -7,7 +7,7 @@ class CalcController {
     this._displayCalcEl = document.querySelector("#display");
     this._dateEl = document.querySelector("#data");
     this._timeEl = document.querySelector("#hora");
-    this._locale = "pt-BR";
+    this._locale = "en-US";
     this._currentDate;
     this.initialize();
     this.initButtonsEvents();
