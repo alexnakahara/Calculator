@@ -1,5 +1,7 @@
 class CalcController {
   constructor() {
+    this.audio = new Audio('click.mp3');
+    this.audioOnOff = false;
     this._lastOperator = " ";
     this._lastNumber = " ";
 
@@ -25,6 +27,37 @@ class CalcController {
     this.setLastNumberDisplay();
     this.pastFromClipboard();
 
+    //querySelectorAll pq existem dois elementos com essa classe no html
+    document.querySelectorAll('.btn-ac').forEach(btn => {
+      btn.addEventListener('dblclick', e => {
+        this.toggleAudio();
+      })
+    })
+
+  }
+
+  toggleAudio() {
+
+    // if (this.audioOnOff) {
+    //   this.audioOnOff = false;
+    // } else {
+    //   this.audioOnOff = true;
+    // }
+    // this.audioOnOff = (this.audioOnOff) ? false : true;
+
+    // refatorando codigo, faz ele sempre ser ao contrario
+    this.audioOnOff = !this.audioOnOff;
+
+  }
+
+  playAudio(){
+
+    if(this.audioOnOff) {
+
+      this.audio.currentTime = 0;
+      this.audio.play();
+
+    }
   }
 
   pastFromClipboard() {
@@ -55,6 +88,8 @@ class CalcController {
   initKeyboard() {
 
     document.addEventListener('keyup', event => {
+
+      this.playAudio();
 
       switch (event.key) {
         case 'Escape':
@@ -310,6 +345,9 @@ class CalcController {
   }
 
   execBtn(value) {
+
+    this.playAudio();
+
     switch (value) {
       case 'ac':
         this.clearAll();
