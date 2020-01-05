@@ -192,7 +192,7 @@ class CalcController {
       } else {
 
         let newValue = this.getLastOperation().toString() + value;
-        this.setLastOperation(parseFloat(newValue));
+        this.setLastOperation(newValue);
 
         //update display
         this.setLastNumberDisplay();
@@ -206,7 +206,7 @@ class CalcController {
     this._operation = [];
     this._lastNumber = '';
     this._lastOperator = '';
-    
+
     this.setLastNumberDisplay();
   }
 
@@ -218,6 +218,8 @@ class CalcController {
   addDot() {
 
     let lastOperation = this.getLastOperation();
+
+    if(typeof lastOperation === 'string' && lastOperation.split('').indexOf('.') > - 1) return;
 
     if (this.isOperator(lastOperation) || !lastOperation) {
       this.pushOperation('0.');
