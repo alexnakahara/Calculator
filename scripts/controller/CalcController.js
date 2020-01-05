@@ -156,14 +156,14 @@ class CalcController {
     }
 
     return lastItem;
-
+    
   }
 
   setLastNumberDisplay() {
 
     let lastNumber = this.getLastItem(false);
 
-    if (!lastNumber) lastNumber = 0;
+    if (!lastNumber || lastNumber == ' ') lastNumber = 0;
 
     this.displayCalc = lastNumber;
 
