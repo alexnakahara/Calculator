@@ -90,7 +90,8 @@ class CalcController {
   }
 
   getResult() {
-    return eval(this._operation.join(""));
+
+    return eval(this._operation.join("")); // executa a operção do array
   }
 
   calc() {
@@ -98,9 +99,16 @@ class CalcController {
     let last = "";
     this._lastOperator = this.getLastItem();
 
+    if (this._operation.length < 3) {
+
+      let firstItem = this._operation[0];
+      this._operation = [firstItem, this._lastOperator, this._lastNumber];
+
+    }
+
     if (this._operation.length > 3) {
 
-      last = this._operation.pop();
+      last = this._operation.pop();//tira o ultimo item do array
 
       this._lastNumber = this.getResult();
 
@@ -109,10 +117,6 @@ class CalcController {
       this._lastNumber = this.getLastItem(false);
 
     }
-
-    console.log('operador', this._lastOperator);
-    console.log('number', this._lastNumber);
-    
 
     let result = this.getResult();
 
@@ -141,6 +145,13 @@ class CalcController {
         lastItem = this._operation[i];
         break;
       }
+
+    }
+
+    if (!lastItem) { //não encontrou, provalvelmente esta undefined
+
+      lastItem = (isOperator) ? this._lastOperator : this._lastNumber;
+      //pegando da memória o operador ou o numero
 
     }
 
