@@ -3,6 +3,6 @@
 Development for practice in Javascript
 
 ### Project
-<p align="center">
+<div align="center">
   <img width="460px" src="img/calculator.png">
-</p>
+</div>
