@@ -1,4 +1,4 @@
-# Modern Calculator in JavaScript
+# Calculator in JavaScript
 
 Development for practice in Javascript
 
