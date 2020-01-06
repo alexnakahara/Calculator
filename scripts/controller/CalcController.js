@@ -50,9 +50,9 @@ class CalcController {
 
   }
 
-  playAudio(){
+  playAudio() {
 
-    if(this.audioOnOff) {
+    if (this.audioOnOff) {
 
       this.audio.currentTime = 0;
       this.audio.play();
@@ -207,7 +207,17 @@ class CalcController {
 
   getResult() {
 
-    return eval(this._operation.join("")); // executa a operção do array
+    try {
+
+      return eval(this._operation.join("")); // executa a operção do array
+
+    } catch (e) {
+
+      setTimeout(() => {
+        this.setError();
+      }, 1);
+
+    }
   }
 
   calc() {
